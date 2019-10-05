@@ -1,4 +1,5 @@
 PHONE_BUTTONS = {
+    '0': ' ',
     '2': 'abc',
     '3': 'def',
     '4': 'ghi',
@@ -14,8 +15,11 @@ def make_path(input_str, path, ans):
     if input_str == '':
         ans.append(path)
         return
-    for let in PHONE_BUTTONS[input_str[0]]:
-        make_path(input_str[1:], path + let, ans)
+    if input_str[0] != '1':
+        for let in PHONE_BUTTONS[input_str[0]]:
+            make_path(input_str[1:], path + let, ans)
+    else:
+        make_path(input_str[1:], path, ans)
 
 
 def phone_number(number):
